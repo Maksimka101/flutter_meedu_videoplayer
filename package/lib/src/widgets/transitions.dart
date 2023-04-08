@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:helpers/helpers/transition.dart';
 
 class CustomOpacityTransition extends StatelessWidget {
   const CustomOpacityTransition({
     Key? key,
-    this.visible,
+    required this.visible,
     this.child,
   }) : super(key: key);
 
-  final bool? visible;
+  final bool visible;
   final Widget? child;
 
   @override
   Widget build(BuildContext context) {
-    return OpacityTransition(
+    return AnimatedOpacity(
+      opacity: visible ? 1 : 0,
       curve: Curves.ease,
       duration: const Duration(milliseconds: 100),
-      visible: visible!,
-      child: child!,
     );
   }
 }
